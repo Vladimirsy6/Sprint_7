@@ -21,8 +21,8 @@ class TestCreateCourier:
         courier.delete_courier(courier_id)
 
     @allure.title("Создание курьера без обязательных полей")
-    @pytest.mark.parametrize("login, password", [(b.generate_random_string(6), None),
-                                                 (None, b.generate_random_string(6))])
+    @pytest.mark.parametrize("login, password", [(b.generate_random_string(6), ""),
+                                                 ("", b.generate_random_string(6))])
     def test_create_courier_empty_fields(self, login, password):
         courier = Courier(login, password)
         response = courier.create_courier()
